@@ -4,7 +4,13 @@ import { useState } from "react";
 import Image from "next/image";
 
 const COLORWAYS = [
-  { id: "ember",  label: "Ember",  hex: "#ff8f3f", src: "/images/shoe-ember.svg" },
+  {
+    id: "ember",
+    label: "Ember",
+    hex: "#ff8f3f",
+    src: "/images/kling_20260512_作品_Image1_i_w_357_1.png",
+    videoSrc: "/videos/kling_20260512_作品_transfrom__600_0.mp4",
+  },
   { id: "noir",   label: "Noir",   hex: "#0a0a0c", src: "/images/shoe-noir.svg"  },
   { id: "frost",  label: "Frost",  hex: "#cce8ff", src: "/images/shoe-frost.svg" },
   { id: "solar",  label: "Solar",  hex: "#f5d400", src: "/images/shoe-solar.svg" },
@@ -14,27 +20,49 @@ const COLORWAYS = [
 export function Stage() {
   const [active, setActive] = useState(0);
   const [autoSpin, setAutoSpin] = useState(false);
+  const activeColorway = COLORWAYS[active];
 
   return (
     <div className="stage">
       <div className="stage-rays" />
 
       <div className="stage-shoe">
-        <Image
-          src={COLORWAYS[active].src}
-          alt={`${COLORWAYS[active].label} colorway`}
-          width={580}
-          height={580}
-          priority
-          style={{
-            width: "100%",
-            height: "auto",
-            objectFit: "contain",
-            filter: "drop-shadow(0 40px 50px rgba(0,0,0,.14)) drop-shadow(0 0 80px rgba(255,154,64,.12))",
-            animation: autoSpin ? "none" : undefined,
-            transform: autoSpin ? "rotateY(20deg)" : undefined,
-          }}
-        />
+        {activeColorway.id === "ember" && activeColorway.videoSrc ? (
+          <video
+            src={activeColorway.videoSrc}
+            poster={activeColorway.src}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            aria-label={`${activeColorway.label} colorway`}
+            style={{
+              width: "100%",
+              height: "auto",
+              objectFit: "contain",
+              filter: "drop-shadow(0 40px 50px rgba(0,0,0,.14)) drop-shadow(0 0 80px rgba(255,154,64,.12))",
+              animation: autoSpin ? "none" : undefined,
+              transform: autoSpin ? "rotateY(20deg)" : undefined,
+            }}
+          />
+        ) : (
+          <Image
+            src={activeColorway.src}
+            alt={`${activeColorway.label} colorway`}
+            width={580}
+            height={580}
+            priority
+            style={{
+              width: "100%",
+              height: "auto",
+              objectFit: "contain",
+              filter: "drop-shadow(0 40px 50px rgba(0,0,0,.14)) drop-shadow(0 0 80px rgba(255,154,64,.12))",
+              animation: autoSpin ? "none" : undefined,
+              transform: autoSpin ? "rotateY(20deg)" : undefined,
+            }}
+          />
+        )}
       </div>
 
       <div className="stage-platform" />
