@@ -1,0 +1,17 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="streetBg" x1="0" y1="0" x2="1200" y2="800" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EEF4FF"/>
+      <stop offset="1" stop-color="#FFEFD8"/>
+    </linearGradient>
+    <linearGradient id="streetShoe" x1="260" y1="360" x2="850" y2="580" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2A3143"/>
+      <stop offset="1" stop-color="#FF8F3F"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#streetBg)"/>
+  <rect y="560" width="1200" height="240" fill="#D7E6FA"/>
+  <path d="M245 520C390 430 558 420 802 468L928 497C954 503 970 530 958 553L936 596C929 608 916 615 903 615H287C226 615 199 548 245 520Z" fill="url(#streetShoe)"/>
+  <rect x="410" y="418" width="132" height="44" rx="22" fill="#FFF0DD"/>
+  <rect x="552" y="434" width="166" height="28" rx="14" fill="#FFF0DD"/>
+</svg>
