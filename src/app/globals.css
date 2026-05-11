@@ -154,6 +154,30 @@ a {
   }
 }
 
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee 32s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -167,8 +191,10 @@ a {
   .reveal,
   .reveal-slow,
   .float-shoe,
-  .pulse-dot::before {
+  .pulse-dot::before,
+  .marquee-track {
     opacity: 1 !important;
     transform: none !important;
+    animation: none !important;
   }
 }
