@@ -1,6 +1,17 @@
 import Image from "next/image";
 
-const floatingShoes = [
+type FloatingShoe = {
+  src: string;
+  top: string;
+  left?: string;
+  right?: string;
+  size: string;
+  delay: string;
+  opacity: number;
+  className: string;
+};
+
+const floatingShoes: readonly FloatingShoe[] = [
   { src: "/images/shoe-ember.svg", top: "7%", left: "5%", size: "140px", delay: "0s", opacity: 0.85, className: "hidden sm:block" },
   { src: "/images/shoe-frost.svg", top: "18%", right: "9%", size: "128px", delay: "1.1s", opacity: 0.72, className: "hidden md:block" },
   { src: "/images/shoe-solar.svg", top: "52%", left: "3%", size: "150px", delay: "0.5s", opacity: 0.8, className: "hidden sm:block" },
