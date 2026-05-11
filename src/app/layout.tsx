@@ -1,27 +1,34 @@
-import type { Metadata } from "next";
-import { Bebas_Neue, Sora } from "next/font/google";
+﻿import type { Metadata } from "next";
+import { Archivo_Black, Archivo, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const heading = Bebas_Neue({
+const display = Archivo_Black({
   subsets: ["latin"],
   weight: "400",
-  variable: "--font-heading",
+  variable: "--font-display",
 });
 
-const body = Sora({
+const body = Archivo({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-body",
 });
 
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
+});
+
 export const metadata: Metadata = {
-  title: "CraftedByChris | Handcrafted Heat",
+  title: "CraftedByChris · Drop 04",
   description:
-    "Premium handcrafted shoe drops for parties, fashion events, and everyday flex. Pre-order the next hot release from CraftedByChris.",
+    "Hand-built drops for party floors, fashion fronts and the daily street. Limited runs, numbered pairs, signed by Chris in Austin, TX.",
   metadataBase: new URL("https://craftedbychrisllc.com"),
   openGraph: {
-    title: "CraftedByChris | Handcrafted Heat",
+    title: "CraftedByChris · Drop 04",
     description:
-      "Premium handcrafted shoe drops for parties, fashion events, and everyday flex.",
+      "Hand-built drops for party floors, fashion fronts and the daily street. Limited runs, numbered pairs.",
     url: "https://craftedbychrisllc.com",
     siteName: "CraftedByChris",
     type: "website",
@@ -37,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${heading.variable} ${body.variable}`}>
+    <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body>{children}</body>
     </html>
   );

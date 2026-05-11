@@ -1,31 +1,23 @@
-const items = [
-  "Handcrafted Heat",
-  "Party Ready",
-  "Fashion Forward",
-  "Street Confidence",
-  "CraftedByChris",
-  "Limited Drops",
-  "Pre-Order Now",
-  "Made Different",
+﻿const ITEMS = [
+  { text: "Hand-Stitched",    ghost: false },
+  { text: "Drop 04",          ghost: true  },
+  { text: "Pre-Order Open",   ghost: false },
+  { text: "Made in ATX",      ghost: true  },
+  { text: "120 Pairs",        ghost: false },
+  { text: "Numbered & Signed",ghost: true  },
+  { text: "No Restocks",      ghost: false },
 ];
 
 export function MarqueeStrip() {
-  // Duplicate for seamless infinite loop
-  const doubled = [...items, ...items];
+  const doubled = [...ITEMS, ...ITEMS];
 
   return (
-    <div
-      className="overflow-hidden bg-[#ff8f3f] py-3.5"
-      aria-label="Brand highlights"
-    >
+    <div className="marquee" aria-hidden="true">
       <div className="marquee-track">
         {doubled.map((item, i) => (
-          <span
-            key={i}
-            className="mx-8 text-[0.6875rem] font-bold uppercase tracking-[0.26em] text-[#0c1220]"
-          >
-            {item}
-            <span className="ml-8 opacity-30">/</span>
+          <span key={i}>
+            <span className={item.ghost ? "ghost" : ""}>{item.text}</span>
+            <i className="sep" />
           </span>
         ))}
       </div>

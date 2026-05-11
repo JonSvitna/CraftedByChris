@@ -1,15 +1,21 @@
+import { Nav } from "@/components/sections/Nav";
 import { Hero } from "@/components/sections/Hero";
 import { MarqueeStrip } from "@/components/sections/MarqueeStrip";
-import { HotItemsColumns } from "@/components/sections/HotItemsColumns";
-import { PreOrderBand } from "@/components/sections/PreOrderBand";
+import { Drops } from "@/components/sections/Drops";
+import { Craft } from "@/components/sections/Craft";
+import { PreOrder } from "@/components/sections/PreOrder";
+import { Footer } from "@/components/sections/Footer";
 
 export default function Home() {
   return (
-    <main className="overflow-x-hidden">
+    <>
+      <Nav />
       <Hero />
       <MarqueeStrip />
-      <HotItemsColumns />
-      <PreOrderBand />
-    </main>
+      <Drops />
+      <Craft />
+      <PreOrder />
+      <Footer />
+    </>
   );
 }
