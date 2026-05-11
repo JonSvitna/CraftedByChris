@@ -1,10 +1,12 @@
+import Link from "next/link";
+
 export function Nav() {
   return (
     <nav className="nav">
-      <a href="/" className="mark">
+      <Link href="/" className="mark">
         <span className="glyph">C</span>
         CraftedByChris
-      </a>
+      </Link>
 
       <ul className="nav-links">
         <li><a href="#drops">Drops</a></li>
