@@ -1,0 +1,17 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fashionBg" x1="0" y1="0" x2="1200" y2="800" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5F8FF"/>
+      <stop offset="1" stop-color="#C8DCF5"/>
+    </linearGradient>
+    <linearGradient id="fashionShoe" x1="260" y1="340" x2="840" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0D1A35"/>
+      <stop offset="1" stop-color="#3767C1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#fashionBg)"/>
+  <rect x="110" y="80" width="980" height="640" rx="36" fill="#FFFFFF" fill-opacity="0.58"/>
+  <path d="M230 520C380 432 560 412 810 474L942 506C968 512 981 540 968 563L946 603C939 615 926 622 912 622H275C214 622 188 551 230 520Z" fill="url(#fashionShoe)"/>
+  <rect x="420" y="428" width="110" height="42" rx="21" fill="#EEF4FF"/>
+  <rect x="540" y="442" width="160" height="28" rx="14" fill="#EEF4FF"/>
+</svg>

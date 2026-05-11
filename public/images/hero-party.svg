@@ -1,0 +1,18 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="partyBg" x1="0" y1="0" x2="1200" y2="800" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#080F1F"/>
+      <stop offset="1" stop-color="#1A4EA8"/>
+    </linearGradient>
+    <linearGradient id="partyShoe" x1="300" y1="360" x2="800" y2="550" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF8F3F"/>
+      <stop offset="1" stop-color="#FFD16D"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#partyBg)"/>
+  <circle cx="940" cy="160" r="140" fill="#2A74E8" fill-opacity="0.35"/>
+  <circle cx="230" cy="640" r="170" fill="#FF8F3F" fill-opacity="0.25"/>
+  <path d="M250 520C380 440 540 420 760 470L920 505C946 510 960 537 948 559L925 602C918 614 905 621 891 621H289C226 621 200 545 250 520Z" fill="url(#partyShoe)"/>
+  <rect x="410" y="420" width="150" height="48" rx="24" fill="#FEECCE" fill-opacity="0.8"/>
+  <rect x="570" y="434" width="130" height="34" rx="17" fill="#FEECCE" fill-opacity="0.7"/>
+</svg>
