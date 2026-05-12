@@ -1,11 +1,14 @@
 ﻿const ITEMS = [
-  { text: "Hand-Stitched",    ghost: false },
-  { text: "Drop 04",          ghost: true  },
-  { text: "Pre-Order Open",   ghost: false },
-  { text: "Made in ATX",      ghost: true  },
-  { text: "120 Pairs",        ghost: false },
-  { text: "Numbered & Signed",ghost: true  },
-  { text: "No Restocks",      ghost: false },
+  { text: "Hand-Painted",         ghost: false },
+  { text: "Baltimore, MD",        ghost: true  },
+  { text: "Custom AF1s",          ghost: false },
+  { text: "5+ Years Crafting",    ghost: true  },
+  { text: "CBC Footwear",         ghost: false },
+  { text: "Ships Nationwide",     ghost: true  },
+  { text: "Shop on Etsy",         ghost: false },
+  { text: "DMV Custom Shoes",     ghost: true  },
+  { text: "No Two Alike",         ghost: false },
+  { text: "Sports · Custom · OG", ghost: true  },
 ];
 
 export function MarqueeStrip() {

@@ -21,8 +21,8 @@ export function Hero() {
           </h1>
 
           <p className="hero-sub">
-            Hand-built one pair at a time in Austin, TX. Italian full-grain leather,
-            numbered lasts, zero shortcuts. Drop 04 — 120 pairs only.
+            Hand-painted one pair at a time in Baltimore, MD. Custom AF1 designs,
+            sports themes, zero stencils. Drop 04 — limited custom orders only.
           </p>
 
           <div className="hero-cta">
@@ -46,7 +46,7 @@ export function Hero() {
             </div>
             <div className="item">
               <div className="k">Studio</div>
-              <div className="v">Austin TX</div>
+              <div className="v">Baltimore MD</div>
             </div>
           </div>
         </div>

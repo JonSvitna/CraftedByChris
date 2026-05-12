@@ -21,14 +21,26 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CraftedByChris · Drop 04",
+  title: "CraftedByChris · Custom Hand-Painted Sneakers · Baltimore, MD",
   description:
-    "Hand-built drops for party floors, fashion fronts and the daily street. Limited runs, numbered pairs, signed by Chris in Austin, TX.",
+    "CBC — Crafted By Chris LLC. Custom hand-painted Air Force 1 sneakers built one pair at a time in Baltimore, MD. 5+ years creating limited-run custom footwear for the DMV. Shop on Etsy.",
   metadataBase: new URL("https://craftedbychrisllc.com"),
+  keywords: [
+    "custom hand-painted shoes Baltimore",
+    "CBC footwear",
+    "Crafted By Chris",
+    "DMV custom shoe maker",
+    "Baltimore custom sneakers",
+    "custom Air Force 1 Maryland",
+    "limited edition custom shoes DMV",
+    "CraftedByChris LLC",
+    "custom painted shoes DC Maryland Virginia",
+    "Etsy custom sneakers Baltimore",
+  ],
   openGraph: {
-    title: "CraftedByChris · Drop 04",
+    title: "CraftedByChris · Custom Hand-Painted Sneakers · Baltimore, MD",
     description:
-      "Hand-built drops for party floors, fashion fronts and the daily street. Limited runs, numbered pairs.",
+      "Hand-painted custom AF1 sneakers built in Baltimore, MD. 5+ years, hundreds of Etsy customers, zero shortcuts. Shop CBC on Etsy.",
     url: "https://craftedbychrisllc.com",
     siteName: "CraftedByChris",
     type: "website",

@@ -61,8 +61,14 @@ export function PreOrder() {
             When the run closes, it&rsquo;s over — no waitlist, no restocks, no exceptions.
           </p>
 
-          <a href="#" className="btn btn-primary" style={{ marginTop: 20, display: "inline-flex" }}>
-            Secure Your Pair
+          <a
+            href="https://www.etsy.com/shop/craftedbychrisllc"
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-primary"
+            style={{ marginTop: 20, display: "inline-flex" }}
+          >
+            Order on Etsy
             <span className="arrow">→</span>
           </a>
         </div>

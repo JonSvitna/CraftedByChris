@@ -7,14 +7,15 @@ export function Craft() {
         <div className="craft-grid">
           {/* Image */}
           <div className="craft-img">
-            <span className="corner">Process · 01 / 06</span>
+            <span className="corner">Collection · 01 / 08</span>
             <Image
-              src="/images/hero-party.svg"
-              alt="Chris at work in the Austin studio"
+              src="/images/ShoeInventory_Screenshot.png"
+              alt="CBC custom hand-painted shoe inventory — Crafted By Chris, Baltimore MD"
               width={600}
               height={750}
+              style={{ objectFit: "cover" }}
             />
-            <span className="corner br">Austin, TX · 2026</span>
+            <span className="corner br">Baltimore, MD · Est. 2020</span>
           </div>
 
           {/* Copy */}
@@ -22,28 +23,33 @@ export function Craft() {
             <p className="eyebrow"><span className="dot" />The craft</p>
             <h2>MADE BY ONE<br />PAIR OF HANDS.</h2>
             <p className="body">
-              Every shoe in a CraftedByChris drop is built by Chris — no production
-              line, no factory floor, no shortcuts. Italian full-grain leather hand-cut
-              on numbered lasts, stitched with waxed linen thread, and finished with a
-              hand-buffed natural edge. It takes 14 days per pair. That&rsquo;s the point.
+              Every pair that leaves the CBC studio starts as a blank canvas and
+              ends as something nobody else on the block is wearing. Based in
+              Baltimore, MD, Crafted By Chris has spent over five years
+              hand-painting custom sneakers — from Eagles fans in Philly to
+              Orioles diehards right here in Bmore. Each design is hand-detailed,
+              one shoe at a time, with no stencils, no shortcuts. Whether it&rsquo;s
+              your team&rsquo;s colors, a custom colorway, or a one-of-one commission,
+              CBC delivers wearable art shipped nationwide through Etsy.
+              Five-plus years. Hundreds of happy customers across the DMV and beyond.
             </p>
 
             <div className="craft-specs">
               <div className="cell">
-                <p className="k">Build time</p>
-                <p className="v">14 <small>days/pair</small></p>
+                <p className="k">Process</p>
+                <p className="v">Hand <small>detailed</small></p>
               </div>
               <div className="cell">
                 <p className="k">Materials</p>
-                <p className="v">Italian <small>full-grain leather</small></p>
+                <p className="v">Premium <small>custom paint</small></p>
               </div>
               <div className="cell">
-                <p className="k">Run size</p>
-                <p className="v">120 <small>pairs/drop</small></p>
+                <p className="k">Customers</p>
+                <p className="v">100–500 <small>Etsy sales</small></p>
               </div>
               <div className="cell">
                 <p className="k">Origin</p>
-                <p className="v">ATX <small>handmade in Austin</small></p>
+                <p className="v">Bmore <small>handmade in Baltimore</small></p>
               </div>
             </div>
           </div>

@@ -11,10 +11,10 @@ const COLORWAYS = [
     src: "/images/kling_20260512_作品_Image1_i_w_357_1.png",
     videoSrc: "/videos/kling_20260512_作品_transfrom__600_0.mp4",
   },
-  { id: "noir",   label: "Noir",   hex: "#0a0a0c", src: "/images/shoe-noir.svg"  },
-  { id: "frost",  label: "Frost",  hex: "#cce8ff", src: "/images/shoe-frost.svg" },
-  { id: "solar",  label: "Solar",  hex: "#f5d400", src: "/images/shoe-solar.svg" },
-  { id: "crest",  label: "Crest",  hex: "#e8e4dc", src: "/images/shoe-crest.svg" },
+  { id: "noir",   label: "Noir",   hex: "#0a0a0c", src: "/images/shoe-new-england.png"  },
+  { id: "frost",  label: "Frost",  hex: "#cce8ff", src: "/images/shoe-la-blue.png" },
+  { id: "solar",  label: "Solar",  hex: "#f5d400", src: "/images/shoe-oklahoma.png" },
+  { id: "crest",  label: "Crest",  hex: "#e8e4dc", src: "/images/shoe-philly-eagles.png" },
 ] as const;
 
 export function Stage() {

@@ -1,3 +1,5 @@
+const ETSY_URL = "https://www.etsy.com/shop/craftedbychrisllc";
+
 export function Footer() {
   return (
     <footer>
@@ -5,8 +7,8 @@ export function Footer() {
         <div className="brand">
           <h3>CRAFTEDBYCHRIS.</h3>
           <p>
-            Hand-built in Austin, TX. One pair at a time, numbered and signed.
-            No production lines. No shortcuts. Just craft.
+            Hand-painted in Baltimore, MD. One pair at a time, numbered and signed.
+            No stencils. No shortcuts. Just craft.
           </p>
         </div>
 
@@ -16,7 +18,11 @@ export function Footer() {
             <li><a href="#drops">Current Drop</a></li>
             <li><a href="#">Archive</a></li>
             <li><a href="#preorder">Pre-Order</a></li>
-            <li><a href="#">Gift Card</a></li>
+            <li>
+              <a href={ETSY_URL} target="_blank" rel="noreferrer">
+                Etsy Shop ↗
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -34,7 +40,7 @@ export function Footer() {
           <h4>Help</h4>
           <ul>
             <li><a href="#">Sizing</a></li>
-            <li><a href="#">Leather Care</a></li>
+            <li><a href="#">Custom Orders</a></li>
             <li><a href="#">Shipping</a></li>
             <li><a href="#">Contact</a></li>
           </ul>
@@ -42,8 +48,8 @@ export function Footer() {
       </div>
 
       <div className="foot-rule">
-        <span>© {new Date().getFullYear()} CraftedByChris LLC. All rights reserved.</span>
-        <span>Made with hand &amp; needle.</span>
+        <span>© {new Date().getFullYear()} Crafted By Chris LLC · Baltimore, MD. All rights reserved.</span>
+        <span>Made with hand &amp; brush.</span>
       </div>
     </footer>
   );
