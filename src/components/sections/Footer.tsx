@@ -16,8 +16,8 @@ export function Footer() {
           <h4>Shop</h4>
           <ul>
             <li><a href="#drops">Current Drop</a></li>
-            <li><a href="#">Archive</a></li>
             <li><a href="#preorder">Pre-Order</a></li>
+            <li><a href="/custom-order">Custom Order</a></li>
             <li>
               <a href={ETSY_URL} target="_blank" rel="noreferrer">
                 Etsy Shop ↗
@@ -29,18 +29,15 @@ export function Footer() {
         <div>
           <h4>Studio</h4>
           <ul>
-            <li><a href="#craft">The Process</a></li>
-            <li><a href="#">Materials</a></li>
-            <li><a href="#">About Chris</a></li>
-            <li><a href="#">Press</a></li>
+            <li><a href="#craft">About Chris</a></li>
+            <li><a href="/custom-order">Custom Orders</a></li>
           </ul>
         </div>
 
         <div>
           <h4>Help</h4>
           <ul>
-            <li><a href="#">Sizing</a></li>
-            <li><a href="#">Custom Orders</a></li>
+            <li><a href="/sizing">Sizing Guide</a></li>
             <li><a href="#">Shipping</a></li>
             <li><a href="#">Contact</a></li>
           </ul>

@@ -22,7 +22,7 @@ export function Nav() {
         <li><a href="#drops">Drops</a></li>
         <li><a href="#craft">Craft</a></li>
         <li><a href="#preorder">Pre-Order</a></li>
-        <li><a href="#">Archive</a></li>
+        <li><a href="/custom-order">Custom Order</a></li>
       </ul>
 
       <div className="nav-right">

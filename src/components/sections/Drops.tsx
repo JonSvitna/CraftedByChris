@@ -1,66 +1,68 @@
 import Image from "next/image";
 
+const ETSY_URL = "https://www.etsy.com/shop/craftedbychrisllc";
+
 const DROPS = [
   {
-    id: "F-0041",
-    name: "Ember Velocity",
-    series: "Series · Velocity",
-    price: "$189",
-    src: "/images/kling_20260512_作品_Image1_i_w_357_1.png",
+    id: "CBC-001",
+    name: "Baltimore Orioles AF1",
+    series: "Home Team",
+    price: "$260",
+    src: "/images/shoe-baltimore.png",
     hot: true,
     size: "feature" as const,
-    swatches: ["#ff8f3f", "#0a0a0c", "#f5f4ef"],
-    lock: "Limited 120 pairs · 87 claimed",
+    swatches: ["#DF4601", "#0a0a0c", "#f5f4ef"],
+    lock: "Fan Favorite · Hand-Painted · Limited",
   },
   {
-    id: "F-0042",
-    name: "Night Grid",
-    series: "Series · Grid",
-    price: "$205",
-    src: "/images/kling_20260512_作品_Image1_i_w_357_0.png",
-    hot: true,
-    size: "standard" as const,
-    swatches: ["#0a0a0c", "#2a2a32", "#f5f4ef"],
-  },
-  {
-    id: "F-0043",
-    name: "Frost Pulse",
-    series: "Series · Pulse",
-    price: "$175",
+    id: "CBC-002",
+    name: "LA Custom AF1",
+    series: "Custom Order",
+    price: "$210",
     src: "/images/shoe-la-blue.png",
+    hot: true,
+    size: "standard" as const,
+    swatches: ["#003DA5", "#FDB927", "#f5f4ef"],
+  },
+  {
+    id: "CBC-003",
+    name: "Atlanta Braves AF1",
+    series: "Sports Fan",
+    price: "$240",
+    src: "/images/shoe-atlanta-braves.png",
     hot: false,
     size: "standard" as const,
-    swatches: ["#cce8ff", "#0a0a0c", "#f5f4ef"],
+    swatches: ["#CE1141", "#13274F", "#f5f4ef"],
   },
   {
-    id: "F-0044",
-    name: "Solar Circuit",
-    series: "Series · Circuit",
-    price: "$215",
-    src: "/images/shoe-oklahoma.png",
-    hot: false,
-    size: "half" as const,
-    swatches: ["#f5d400", "#0a0a0c", "#ff8f3f"],
-  },
-  {
-    id: "F-0045",
-    name: "Neon Stitch",
-    series: "Series · Stitch",
-    price: "$199",
-    src: "/images/shoe-okc-thunder.png",
-    hot: true,
-    size: "half" as const,
-    swatches: ["#00ffaa", "#0a0a0c", "#f5f4ef"],
-  },
-  {
-    id: "F-0046",
-    name: "City Crest",
-    series: "Series · Crest",
-    price: "$169",
+    id: "CBC-004",
+    name: "Philadelphia Eagles AF1",
+    series: "Sports Fan",
+    price: "$230",
     src: "/images/shoe-philly-eagles.png",
     hot: false,
     size: "half" as const,
-    swatches: ["#e8e4dc", "#0a0a0c", "#5d5b62"],
+    swatches: ["#004C54", "#0a0a0c", "#A5ACAF"],
+  },
+  {
+    id: "CBC-005",
+    name: "OKC Thunder AF1",
+    series: "Sports Fan",
+    price: "$260",
+    src: "/images/shoe-okc-thunder.png",
+    hot: true,
+    size: "half" as const,
+    swatches: ["#007AC1", "#EF3B24", "#f5f4ef"],
+  },
+  {
+    id: "CBC-006",
+    name: "Seattle Seahawks AF1",
+    series: "Sports Fan",
+    price: "$225",
+    src: "/images/shoe-seattle.png",
+    hot: false,
+    size: "half" as const,
+    swatches: ["#002244", "#69BE28", "#A5ACAF"],
   },
 ];
 
@@ -75,10 +77,12 @@ export function Drops() {
           </div>
           <div className="rhs">
             <p>
-              Every pair is built by a single set of hands. When they&rsquo;re gone,
-              they&rsquo;re gone — no reprints, no restocks, no exceptions.
+              Every pair is hand-painted by a single set of hands. When they&rsquo;re gone,
+              they go into the queue — no shortcuts, no restocks, just your place in line.
             </p>
-            <a href="#" className="link">View full archive →</a>
+            <a href={ETSY_URL} target="_blank" rel="noreferrer" className="link">
+              See More on Etsy →
+            </a>
           </div>
         </div>
 

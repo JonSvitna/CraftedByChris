@@ -31,7 +31,13 @@ export function Craft() {
               one shoe at a time, with no stencils, no shortcuts. Whether it&rsquo;s
               your team&rsquo;s colors, a custom colorway, or a one-of-one commission,
               CBC delivers wearable art shipped nationwide through Etsy.
-              Five-plus years. Hundreds of happy customers across the DMV and beyond.
+            </p>
+            <p className="body" style={{ marginTop: "1rem" }}>
+              From the classic white-on-white Air Force 1 base to full-color team
+              tributes dripping in detail, every pair goes through Chris&rsquo;s hands —
+              primed, painted, sealed, and quality-checked before it ships. The DMV
+              has been showing love for five-plus years and customers nationwide keep
+              coming back. Not because it&rsquo;s fast. Because it&rsquo;s right.
             </p>
 
             <div className="craft-specs">
@@ -52,6 +58,30 @@ export function Craft() {
                 <p className="v">Bmore <small>handmade in Baltimore</small></p>
               </div>
             </div>
+
+            <blockquote style={{
+              marginTop: "2rem",
+              borderLeft: "3px solid var(--amber)",
+              paddingLeft: "1.25rem",
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(1rem, 2vw, 1.25rem)",
+              letterSpacing: "0.04em",
+              color: "var(--bone)",
+            }}>
+              &ldquo;Built different. Literally.&rdquo;
+              <cite style={{
+                display: "block",
+                marginTop: "0.5rem",
+                fontFamily: "var(--font-mono)",
+                fontSize: "0.7rem",
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                color: "var(--ash)",
+                fontStyle: "normal",
+              }}>
+                — CBC, Baltimore MD · Est. 2020
+              </cite>
+            </blockquote>
           </div>
         </div>
       </div>

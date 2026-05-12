@@ -1,76 +1,108 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-// Target: next Friday at 23:59 local time
-function getTarget(): Date {
-  const now = new Date();
-  const daysUntilFriday = (5 - now.getDay() + 7) % 7 || 7;
-  const target = new Date(now);
-  target.setDate(now.getDate() + daysUntilFriday);
-  target.setHours(23, 59, 0, 0);
-  return target;
-}
-
-function formatUnit(n: number) {
-  return String(Math.max(0, n)).padStart(2, "0");
-}
+type Status = "idle" | "loading" | "success" | "error";
 
 export function PreOrder() {
-  const [target] = useState(getTarget);
-  const [diff, setDiff] = useState(0);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<Status>("idle");
 
-  useEffect(() => {
-    setDiff(target.getTime() - Date.now());
-    const id = setInterval(() => setDiff(target.getTime() - Date.now()), 1000);
-    return () => clearInterval(id);
-  }, [target]);
-
-  const totalSecs = Math.max(0, Math.floor(diff / 1000));
-  const days  = Math.floor(totalSecs / 86400);
-  const hours = Math.floor((totalSecs % 86400) / 3600);
-  const mins  = Math.floor((totalSecs % 3600) / 60);
-  const secs  = totalSecs % 60;
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!name.trim() || !email.trim()) return;
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, tag: "pre-order" }),
+      });
+      setStatus(res.ok ? "success" : "error");
+    } catch {
+      setStatus("error");
+    }
+  }
 
   return (
     <section id="preorder" className="preorder">
       <div className="wrap">
         <h2>
-          CLOSES <span className="accent">FRIDAY.</span>
-          <br />120 PAIRS.
-          <br />ZERO RESTOCKS.
+          COMING <span className="accent">SOON.</span>
+          <br />GET NOTIFIED
+          <br />FIRST.
         </h2>
 
         <div className="ts">
-          <div className="countdown">
-            {[
-              { num: formatUnit(days),  lbl: "Days"  },
-              { num: formatUnit(hours), lbl: "Hours" },
-              { num: formatUnit(mins),  lbl: "Min"   },
-              { num: formatUnit(secs),  lbl: "Sec"   },
-            ].map(({ num, lbl }) => (
-              <div key={lbl} className="unit">
-                <div className="num">{num}</div>
-                <div className="lbl">{lbl}</div>
-              </div>
-            ))}
-          </div>
+          {status === "success" ? (
+            <div style={{ padding: "2rem 0" }}>
+              <p style={{ fontSize: "1.25rem", fontFamily: "var(--font-display)", letterSpacing: "0.05em" }}>
+                YOU&rsquo;RE ON THE LIST.
+              </p>
+              <p style={{ marginTop: "0.75rem", color: "var(--ash)", fontSize: "0.875rem" }}>
+                Chris will reach out when the next run opens. Stay tuned.
+              </p>
+            </div>
+          ) : (
+            <>
+              <p>
+                Pre-orders are coming soon. Drop your info below and you&rsquo;ll be the
+                first to know when the next run opens — no waitlist, just your place in line.
+              </p>
 
-          <p>
-            Drop 04 is closing Friday at midnight. 120 pairs numbered and signed.
-            When the run closes, it&rsquo;s over — no waitlist, no restocks, no exceptions.
-          </p>
-
-          <a
-            href="https://www.etsy.com/shop/craftedbychrisllc"
-            target="_blank"
-            rel="noreferrer"
-            className="btn btn-primary"
-            style={{ marginTop: 20, display: "inline-flex" }}
-          >
-            Order on Etsy
-            <span className="arrow">→</span>
-          </a>
+              <form onSubmit={handleSubmit} style={{ marginTop: 24, display: "flex", flexDirection: "column", gap: 12 }}>
+                <input
+                  type="text"
+                  placeholder="Your name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  style={{
+                    padding: "12px 16px",
+                    border: "1px solid var(--rule-strong)",
+                    borderRadius: 8,
+                    background: "transparent",
+                    fontFamily: "var(--font-body)",
+                    fontSize: "0.9rem",
+                    color: "var(--bone)",
+                    outline: "none",
+                  }}
+                />
+                <input
+                  type="email"
+                  placeholder="Your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  style={{
+                    padding: "12px 16px",
+                    border: "1px solid var(--rule-strong)",
+                    borderRadius: 8,
+                    background: "transparent",
+                    fontFamily: "var(--font-body)",
+                    fontSize: "0.9rem",
+                    color: "var(--bone)",
+                    outline: "none",
+                  }}
+                />
+                <button
+                  type="submit"
+                  disabled={status === "loading"}
+                  className="btn btn-primary"
+                  style={{ marginTop: 8, display: "inline-flex", justifyContent: "center" }}
+                >
+                  {status === "loading" ? "Sending…" : "Notify Me When It Opens"}
+                  {status !== "loading" && <span className="arrow">→</span>}
+                </button>
+                {status === "error" && (
+                  <p style={{ color: "#e05c5c", fontSize: "0.8rem", marginTop: 4 }}>
+                    Something went wrong. Try again or email us directly.
+                  </p>
+                )}
+              </form>
+            </>
+          )}
         </div>
       </div>
     </section>
