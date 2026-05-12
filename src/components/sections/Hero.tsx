@@ -21,8 +21,8 @@ export function Hero() {
           </h1>
 
           <p className="hero-sub">
-            Hand-painted one pair at a time in Baltimore, MD. Custom AF1 designs,
-            sports themes, zero stencils. Drop 04 — limited custom orders only.
+            Hand-painted one pair at a time in Baltimore, MD. Original AF1 designs,
+            sports themes, built from scratch. Drop 04 — limited custom orders only.
           </p>
 
           <div className="hero-cta">
