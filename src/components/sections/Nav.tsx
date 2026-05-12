@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { HoloCoin } from "./HoloCoin";
 
 const ETSY_URL = "https://www.etsy.com/shop/craftedbychrisllc";
 
@@ -7,14 +7,7 @@ export function Nav() {
   return (
     <nav className="nav">
       <Link href="/" className="mark">
-        <Image
-          src="/images/CreationsByChris.png"
-          alt="Crafted By Chris CBC logo"
-          width={28}
-          height={28}
-          className="glyph"
-          style={{ borderRadius: 6, objectFit: "cover" }}
-        />
+        <HoloCoin />
         CraftedByChris
       </Link>
 

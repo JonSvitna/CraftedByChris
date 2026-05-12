@@ -2,7 +2,21 @@ import Image from "next/image";
 
 const ETSY_URL = "https://www.etsy.com/shop/craftedbychrisllc";
 
-const DROPS = [
+type Drop = {
+  id: string;
+  name: string;
+  series: string;
+  price: string;
+  salePrice?: string;
+  src: string;
+  hot: boolean;
+  size: "feature" | "standard" | "half";
+  swatches: string[];
+  lock?: string;
+  galaxy?: boolean;
+};
+
+const DROPS: Drop[] = [
   {
     id: "CBC-001",
     name: "Baltimore Orioles AF1",
@@ -10,7 +24,7 @@ const DROPS = [
     price: "$260",
     src: "/images/shoe-baltimore.png",
     hot: true,
-    size: "feature" as const,
+    size: "feature",
     swatches: ["#DF4601", "#0a0a0c", "#f5f4ef"],
     lock: "Fan Favorite · Hand-Painted · Limited",
   },
@@ -21,7 +35,7 @@ const DROPS = [
     price: "$210",
     src: "/images/shoe-la-blue.png",
     hot: true,
-    size: "standard" as const,
+    size: "standard",
     swatches: ["#003DA5", "#FDB927", "#f5f4ef"],
   },
   {
@@ -31,7 +45,7 @@ const DROPS = [
     price: "$240",
     src: "/images/shoe-atlanta-braves.png",
     hot: false,
-    size: "standard" as const,
+    size: "standard",
     swatches: ["#CE1141", "#13274F", "#f5f4ef"],
   },
   {
@@ -41,7 +55,7 @@ const DROPS = [
     price: "$230",
     src: "/images/shoe-philly-eagles.png",
     hot: false,
-    size: "half" as const,
+    size: "half",
     swatches: ["#004C54", "#0a0a0c", "#A5ACAF"],
   },
   {
@@ -51,7 +65,7 @@ const DROPS = [
     price: "$260",
     src: "/images/shoe-okc-thunder.png",
     hot: true,
-    size: "half" as const,
+    size: "half",
     swatches: ["#007AC1", "#EF3B24", "#f5f4ef"],
   },
   {
@@ -61,8 +75,20 @@ const DROPS = [
     price: "$225",
     src: "/images/shoe-seattle.png",
     hot: false,
-    size: "half" as const,
+    size: "half",
     swatches: ["#002244", "#69BE28", "#A5ACAF"],
+  },
+  {
+    id: "CBC-007",
+    name: "Galaxy AF1",
+    series: "Signature Edition",
+    price: "$340",
+    salePrice: "$250",
+    src: "/images/shoe-galaxy-af1.png",
+    hot: true,
+    size: "half",
+    swatches: ["#6B21A8", "#1e1b4b", "#f5f4ef"],
+    galaxy: true,
   },
 ];
 
@@ -88,7 +114,13 @@ export function Drops() {
 
         <div className="drops">
           {DROPS.map((drop) => (
-            <div key={drop.id} className={`card ${drop.size}`}>
+            <a
+              key={drop.id}
+              href={ETSY_URL}
+              target="_blank"
+              rel="noreferrer"
+              className={`card ${drop.size}${drop.galaxy ? " galaxy" : ""}`}
+            >
               <div className="media">
                 {drop.hot && (
                   <span className="tag hot tag-pulse">● Hot</span>
@@ -105,7 +137,7 @@ export function Drops() {
                   height={480}
                 />
 
-                <button className="quick" aria-label={`Quick add ${drop.name}`}>+</button>
+                <span className="quick" aria-hidden="true">+</span>
 
                 {drop.size === "feature" && drop.lock && (
                   <span className="lock">
@@ -125,9 +157,18 @@ export function Drops() {
                     ))}
                   </div>
                 </div>
-                <span className="price">{drop.price}</span>
+                <div className="price-wrap">
+                  {drop.salePrice ? (
+                    <>
+                      <span className="price-original">{drop.price}</span>
+                      <span className="price price-sale">{drop.salePrice}</span>
+                    </>
+                  ) : (
+                    <span className="price">{drop.price}</span>
+                  )}
+                </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
