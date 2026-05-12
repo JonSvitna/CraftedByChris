@@ -113,7 +113,7 @@ export default function CustomOrderPage() {
             </p>
 
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+              <div className="form-2col" style={{ display: "grid", gap: 14 }}>
                 <div>
                   <label style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: "0.65rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--ash)", marginBottom: 6 }}>
                     Name *
