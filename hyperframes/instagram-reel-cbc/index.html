@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>CBC Instagram Reel</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --bone: #0a0a0c;
+        --bone-2: #1c1c22;
+        --ink: #f5f4ef;
+        --ink-2: #eceae3;
+        --ash: #5d5b62;
+        --amber: #e8942d;
+        --amber-deep: #c96e18;
+        --galaxy: #6b21a8;
+        --galaxy-glow: #9333ea;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--bone);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+      }
+      #scene1 {
+        z-index: 3;
+      }
+      #scene2 {
+        z-index: 2;
+        opacity: 0;
+      }
+      #scene3 {
+        z-index: 4;
+        opacity: 0;
+      }
+      .scene-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+      .scene-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 44px 36px;
+        gap: 16px;
+        position: relative;
+      }
+      .bg-grid {
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(
+            rgba(233, 148, 45, 0.06) 1px,
+            transparent 1px
+          ),
+          linear-gradient(90deg, rgba(233, 148, 45, 0.06) 1px, transparent 1px);
+        background-size: 48px 48px;
+        opacity: 0.35;
+        pointer-events: none;
+      }
+      .bg-bloom {
+        position: absolute;
+        width: 900px;
+        height: 900px;
+        left: 50%;
+        top: 18%;
+        transform: translate(-50%, -50%);
+        background: radial-gradient(
+          circle,
+          rgba(147, 51, 234, 0.35) 0%,
+          rgba(10, 10, 12, 0) 68%
+        );
+        pointer-events: none;
+      }
+      .bg-bloom-amber {
+        position: absolute;
+        width: 700px;
+        height: 700px;
+        left: 8%;
+        bottom: -8%;
+        background: radial-gradient(
+          circle,
+          rgba(232, 148, 45, 0.2) 0%,
+          rgba(10, 10, 12, 0) 70%
+        );
+        pointer-events: none;
+      }
+      .mono-cap {
+        font-family: ui-monospace, Consolas, monospace;
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--ink-2);
+        max-width: 720px;
+      }
+      .hook-line {
+        font-weight: 900;
+        line-height: 0.94;
+        letter-spacing: -0.03em;
+        color: var(--ink);
+        font-size: 68px;
+        max-width: 100%;
+      }
+      .hook-line.accent {
+        color: var(--amber);
+        text-shadow: 0 0 60px rgba(232, 148, 45, 0.35);
+      }
+      .hook-line.galaxy {
+        color: var(--galaxy-glow);
+        text-shadow: 0 0 72px rgba(147, 51, 234, 0.45);
+      }
+      .coord {
+        position: absolute;
+        right: 36px;
+        top: 100px;
+        max-width: 280px;
+        text-align: right;
+        font-family: ui-monospace, Consolas, monospace;
+        font-size: 10px;
+        color: var(--ink-2);
+        letter-spacing: 0.12em;
+      }
+      .scene2 .scene-content {
+        justify-content: flex-end;
+        padding-bottom: 56px;
+      }
+      .gal-chip {
+        align-self: flex-start;
+        margin-bottom: 8px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(147, 51, 234, 0.45);
+        color: var(--ink);
+        font-family: ui-monospace, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        background: rgba(28, 28, 34, 0.75);
+        box-shadow: 0 0 40px rgba(107, 33, 168, 0.25);
+      }
+      .video-shell {
+        width: 100%;
+        flex: 1;
+        min-height: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 0 0;
+      }
+      .video-frame {
+        width: 100%;
+        height: 1120px;
+        border-radius: 28px;
+        overflow: hidden;
+        border: 2px solid rgba(233, 148, 45, 0.25);
+        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.55),
+          0 0 80px rgba(107, 33, 168, 0.35);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .video-frame video {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .scene3 .scene-content {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 32px;
+      }
+      .coin-stage {
+        perspective: 900px;
+      }
+      .holo-coin {
+        width: 220px;
+        height: 220px;
+        position: relative;
+        transform-style: preserve-3d;
+      }
+      .coin-face {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        overflow: hidden;
+        backface-visibility: hidden;
+        border: 3px solid rgba(233, 148, 45, 0.45);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5),
+          inset 0 0 40px rgba(255, 255, 255, 0.06);
+      }
+      .coin-front {
+        transform: rotateY(0deg);
+      }
+      .coin-back {
+        transform: rotateY(180deg);
+        display: grid;
+        place-items: center;
+        background: linear-gradient(145deg, var(--bone-2), var(--bone));
+      }
+      .coin-front img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .coin-monogram {
+        font-weight: 900;
+        font-size: 62px;
+        letter-spacing: 0.08em;
+        color: var(--ink);
+        text-shadow: 0 0 26px rgba(232, 148, 45, 0.75), 0 0 3px rgba(201, 110, 24, 0.9);
+      }
+      .holo-layer {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        pointer-events: none;
+        background: linear-gradient(
+          120deg,
+          rgba(255, 255, 255, 0.14),
+          transparent 42%,
+          rgba(147, 51, 234, 0.12) 88%
+        );
+        mix-blend-mode: soft-light;
+        opacity: 0.55;
+      }
+      .cta-primary {
+        font-weight: 800;
+        font-size: 38px;
+        letter-spacing: -0.02em;
+        color: var(--ink);
+      }
+      .cta-sub {
+        font-family: ui-monospace, Consolas, monospace;
+        font-size: 20px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--amber);
+      }
+      .cta-etsy {
+        font-family: ui-monospace, Consolas, monospace;
+        font-size: 17px;
+        letter-spacing: 0.1em;
+        color: var(--ink-2);
+      }
+      #end-veil {
+        position: absolute;
+        inset: 0;
+        z-index: 50;
+        pointer-events: none;
+        background: var(--bone);
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="10"
+      data-width="1080"
+      data-height="1920"
+    >
+      <audio
+        id="bed"
+        data-start="0"
+        data-duration="10"
+        data-track-index="0"
+        data-volume="0.4"
+        src="assets/beat-placeholder.wav"
+      ></audio>
+
+      <div id="scene1" class="scene">
+        <div class="scene-inner">
+          <div class="bg-grid" data-layout-ignore="true"></div>
+          <div class="bg-bloom" data-layout-ignore="true"></div>
+          <div class="bg-bloom-amber" data-layout-ignore="true"></div>
+          <div class="coord">DMV · 39.2904° N</div>
+          <div class="scene-content">
+            <div id="s1-eyebrow" class="mono-cap">Baltimore studio · hand-painted AF1</div>
+            <div id="s1-line1" class="hook-line">FOR THE</div>
+            <div id="s1-line2" class="hook-line accent">FLOOR</div>
+            <div id="s1-line3" class="hook-line galaxy">GALAXY DROP</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene2" class="scene">
+        <div class="scene-inner">
+          <div class="bg-grid" data-layout-ignore="true"></div>
+          <div class="bg-bloom" data-layout-ignore="true"></div>
+          <div class="scene-content scene2">
+            <div id="gal-chip" class="gal-chip">Colorway · Galaxy Edition</div>
+            <div id="video-frame" class="video-shell">
+              <div class="video-frame">
+                <video
+                  id="gal-vid"
+                  data-start="2"
+                  data-duration="4.6"
+                  data-track-index="1"
+                  src="assets/galaxy-transform.mp4"
+                  poster="assets/shoe-galaxy-af1.png"
+                  muted
+                  playsinline
+                  crossorigin="anonymous"
+                ></video>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene3" class="scene">
+        <div class="scene-inner">
+          <div class="bg-grid" data-layout-ignore="true"></div>
+          <div class="bg-bloom-amber" data-layout-ignore="true"></div>
+          <div class="scene-content scene3">
+            <div id="coin-float">
+              <div id="coin-rise" class="coin-stage">
+                <div id="holo-coin" class="holo-coin">
+                  <div class="coin-face coin-front">
+                    <img src="assets/cbc-coin-front.png" width="512" height="512" alt="" />
+                    <div class="holo-layer holo-layer--front"></div>
+                  </div>
+                  <div class="coin-face coin-back">
+                    <span class="coin-monogram">CBC</span>
+                    <div class="holo-layer"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="cta-block">
+              <div id="cta-line" class="cta-primary">CraftedByChris</div>
+              <div id="cta-sub" class="cta-sub">Shop the studio</div>
+              <div id="cta-etsy" class="cta-etsy">craftedbychris.com · Etsy</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="end-veil"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      const T_HOOK = 1.65;
+      const D_TRANS = 0.42;
+      const T_OUT = 6.55;
+      const floatStart = T_OUT + D_TRANS + 0.12;
+
+      const s1Inner = "#scene1 .scene-inner";
+      const s2Inner = "#scene2 .scene-inner";
+      const s3Inner = "#scene3 .scene-inner";
+
+      tl.from(
+        "#s1-eyebrow",
+        { y: 22, opacity: 0, duration: 0.48, ease: "power3.out" },
+        0.14,
+      );
+      tl.from(
+        "#s1-line1",
+        { x: -56, opacity: 0, duration: 0.58, ease: "expo.out" },
+        0.22,
+      );
+      tl.from(
+        "#s1-line2",
+        { y: 48, opacity: 0, duration: 0.52, ease: "circ.out" },
+        0.32,
+      );
+      tl.from(
+        "#s1-line3",
+        { scale: 0.88, opacity: 0, duration: 0.55, ease: "power4.out" },
+        0.42,
+      );
+
+      tl.to(
+        s1Inner,
+        {
+          filter: "blur(12px)",
+          scale: 1.03,
+          opacity: 0,
+          duration: D_TRANS,
+          ease: "power2.inOut",
+        },
+        T_HOOK,
+      );
+      tl.fromTo(
+        "#scene2",
+        { opacity: 0 },
+        { opacity: 1, duration: 0.06, ease: "none" },
+        T_HOOK,
+      );
+      tl.fromTo(
+        s2Inner,
+        { filter: "blur(12px)", scale: 0.96, opacity: 0 },
+        {
+          filter: "blur(0px)",
+          scale: 1,
+          opacity: 1,
+          duration: D_TRANS,
+          ease: "power2.inOut",
+        },
+        T_HOOK + 0.04,
+      );
+
+      tl.from(
+        "#gal-chip",
+        { y: 20, opacity: 0, duration: 0.42, ease: "back.out(1.25)" },
+        T_HOOK + 0.1,
+      );
+      tl.from(
+        "#video-frame",
+        { scale: 0.92, opacity: 0, duration: 0.52, ease: "power4.out" },
+        T_HOOK + 0.16,
+      );
+
+      tl.to(
+        s2Inner,
+        {
+          filter: "blur(14px)",
+          scale: 1.04,
+          opacity: 0,
+          duration: D_TRANS,
+          ease: "power2.inOut",
+        },
+        T_OUT,
+      );
+      tl.fromTo(
+        "#scene3",
+        { opacity: 0 },
+        { opacity: 1, duration: 0.06, ease: "none" },
+        T_OUT,
+      );
+      tl.fromTo(
+        s3Inner,
+        { filter: "blur(14px)", scale: 0.95, opacity: 0 },
+        {
+          filter: "blur(0px)",
+          scale: 1,
+          opacity: 1,
+          duration: D_TRANS,
+          ease: "power2.inOut",
+        },
+        T_OUT + 0.04,
+      );
+
+      tl.from(
+        "#coin-rise",
+        { y: 36, opacity: 0, rotation: -10, duration: 0.58, ease: "elastic.out(1, 0.55)" },
+        T_OUT + 0.14,
+      );
+      tl.from(
+        "#cta-line",
+        { y: 32, opacity: 0, duration: 0.46, ease: "power3.out" },
+        T_OUT + 0.22,
+      );
+      tl.from(
+        "#cta-sub",
+        { y: 26, opacity: 0, duration: 0.42, ease: "power2.out" },
+        T_OUT + 0.3,
+      );
+      tl.from(
+        "#cta-etsy",
+        { y: 22, opacity: 0, duration: 0.38, ease: "circ.out" },
+        T_OUT + 0.36,
+      );
+
+      const bobHalf = 0.68;
+      const bobRepeat = 1;
+      tl.to(
+        "#coin-float",
+        { y: "-=20", duration: bobHalf, ease: "sine.inOut", repeat: bobRepeat, yoyo: true },
+        floatStart,
+      );
+      tl.to(
+        "#holo-coin",
+        { rotationY: 168, duration: 2.35, ease: "power1.inOut" },
+        floatStart,
+      );
+
+      tl.to("#end-veil", { opacity: 1, duration: 0.55, ease: "power2.in" }, 9.15);
+
+      tl.set("#scene1", { visibility: "hidden" }, T_HOOK + D_TRANS + 0.05);
+      tl.set("#scene2", { visibility: "hidden" }, T_OUT + D_TRANS + 0.05);
+      tl.set("#scene3", { visibility: "hidden" }, 9.82);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

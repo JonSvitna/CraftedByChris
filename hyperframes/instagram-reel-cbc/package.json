@@ -1,0 +1,16 @@
+{
+  "name": "instagram-reel-cbc",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes hyperframes@0.6.6 preview",
+    "check": "npx --yes hyperframes@0.6.6 lint && npx --yes hyperframes@0.6.6 validate && npx --yes hyperframes@0.6.6 inspect",
+    "render": "node scripts/render.mjs",
+    "publish": "npx --yes hyperframes@0.6.6 publish",
+    "gen-assets": "node scripts/gen-assets.mjs"
+  },
+  "devDependencies": {
+    "ffmpeg-static": "^5.2.0",
+    "ffprobe-static": "^3.1.0"
+  }
+}
